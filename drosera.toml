@@ -1,0 +1,14 @@
+ethereum_rpc = "https://ethereum-rpc.publicnode.com"
+drosera_rpc = "https://relay.ethereum.drosera.io/"
+
+[traps.aave_withdrawal_trap]
+path = "./out/AaveWithdrawalTrap.sol/AaveWithdrawalTrap.json"
+address = "0xc44b0a6588F108836d75D7CB2DD9a018024E0B2F"
+response_contract = "0x0dcFeA3c6541DC3281E8CCF3C574Ed81e06d417b"
+response_function = "respond(uint256)"
+cooldown_period_blocks = 33
+min_number_of_operators = 1
+max_number_of_operators = 2
+block_sample_size = 10
+private_trap = true
+whitelist = ["0x16B022CEF4Ce0af586eF8aa3C47e2b63DcB7bbA3"]
