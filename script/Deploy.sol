@@ -1,17 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "../src/AaveWithdrawalTrap.sol";
-import "../src/AaveWithdrawalResponse.sol";
-import "forge-std/Script.sol";
+contract AaveWithdrawalResponse {
+    uint256 public lastResponded;
+    address public immutable owner;
 
-contract Deploy is Script {
-    function run() external {
-        vm.startBroadcast();
+    constructor() {
+        owner = msg.sender;
+    }
 
-        AaveWithdrawalTrap trap = new AaveWithdrawalTrap();
-        AaveWithdrawalResponse response = new AaveWithdrawalResponse();
-
-        vm.stopBroadcast();
+    function respond(uint256 amount) external {
+        require(msg.sender == owner, "not authorized");
+        lastResponded = amount;
     }
 }
